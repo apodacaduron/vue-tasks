@@ -3,15 +3,18 @@
   Nav(onlyLogo, :spaceBetween="false")
   .sized-box.df.df-center
     .form-container.df.df-center.df-direction-column
-      input.input.input__border(placeholder="Correo electrónico")
+      input.input.input__border.full-width(placeholder="Correo electrónico")
       .mb-2
-      input.input.input__border(placeholder="Contraseña", type="password")
+      input.input.input__border.full-width(
+        placeholder="Contraseña",
+        type="password"
+      )
       .mb-2
-      .no-account.color-white
+      .no-account.color-white.small-text
         | Aún no tienes cuenta? &nbsp;
-        router-link(to="/sign-up") Haz click aquí
+        router-link.anchor(to="/sign-up") Haz click aquí
       .mb-2
-      button.button.button__gradient-background.font-bold Iniciar Sesión
+      button.button.button__gradient-background.font-bold.full-width Iniciar Sesión
 </template>
 
 <script>
@@ -35,4 +38,5 @@ export default {
     width: 100%
     .form-container
       max-width: 300px
+      width: 100%
 </style>
