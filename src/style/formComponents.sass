@@ -7,13 +7,22 @@
   padding: 8px 16px
   font: inherit
   cursor: pointer
-  outline: inherit
   text-decoration: none
   border-radius: $radius
+  transition: 0.2s all ease-in-out
   &__border
     border: 2px solid $border
   &__gradient-background
     background: $gradient
+    &:hover:not(:disabled)
+      transform: translate3d(0,-2px,0)
+      -webkit-box-shadow: 0px 8px 8px 0px rgba(0,0,0,0.3)
+      -moz-box-shadow: 0px 8px 8px 0px rgba(0,0,0,0.3)
+      box-shadow: 0px 8px 8px 0px rgba(0,0,0,0.3)
+    &:disabled
+      background: gray
+      color: darkgrey
+      cursor: default
 
 .input
   -webkit-appearance: none
@@ -25,12 +34,16 @@
   box-sizing: border-box
   color: $white
   font-size: 16px
+  transition: 0.1s all ease-in-out
   &__border
     border: 2px solid $border
+    &:hover
+      border: 2px solid rgba($pink, 0.4)
+    &:focus
+      border: 2px solid $pink
 
 .anchor
   border: 0
-  outline: 0
   border-radius: $radius
   color: $pink
   &__border
