@@ -1,7 +1,7 @@
 <template lang="pug">
-#home
+#home.full-width
   Nav(transparent)
-  .header.df.df-center.df-direction-column.m-auto
+  .header.df.df-center.df-direction-column.full-width
     h1.color-white Tasks, just tasks.
     .mb-1
     p.color-white Keep track of the daily tasks in life and get that satisfaction upon completion.
@@ -26,6 +26,8 @@ export default {
 #home
   background: url('../assets/bg.jpg') no-repeat center / cover
   .header
-    max-width: 300px
     height: 100vh
+    text-align: center
+    p
+      max-width: 300px
 </style>

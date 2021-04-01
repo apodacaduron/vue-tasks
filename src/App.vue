@@ -1,5 +1,6 @@
 <template lang="pug">
-  #app
+#app
+  transition(name="fade")
     router-view
 </template>
 
@@ -17,4 +18,11 @@
   background: $darkBg
   width: 100%
   height: 100vh
+
+.fade-enter-active, .fade-leave-active
+  transition: opacity .2s
+  position: absolute
+
+.fade-enter, .fade-leave-to
+  opacity: 0
 </style>
