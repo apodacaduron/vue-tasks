@@ -19,7 +19,7 @@
   -moz-osx-font-smoothing: grayscale
   background: $darkBg
   width: 100%
-  height: 100vh
+  min-height: 100vh
 
 .fade-enter-active, .fade-leave-active
   transition: opacity .2s

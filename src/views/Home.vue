@@ -6,16 +6,25 @@
     .mb-1
     p.color-white Keep track of the daily tasks in life and get that satisfaction upon completion.
     .mb-3
-    router-link.button.button__gradient-background.font-bold(to="/login") Get Started
+    router-link.button.button__gradient-background.font-bold(
+      :to="isAuthenticated ? '/tasks' : '/login'"
+    ) Get Started
     .mb-4
   Footer(fixed)
 </template>
 
 <script>
+import { mapGetters } from "vuex";
+
 export default {
   components: {
     Nav: () => import("@/components/Nav/Nav.vue"),
     Footer: () => import("@/components/Footer/Footer.vue")
+  },
+  computed: {
+    ...mapGetters({
+      isAuthenticated: "auth/isAuthenticated"
+    })
   }
 };
 </script>

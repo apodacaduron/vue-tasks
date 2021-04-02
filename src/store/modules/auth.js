@@ -51,7 +51,7 @@ const actions = {
       });
     }
   },
-  signUp({ commit, state }, payload) {
+  signUp({ commit, state, dispatch }, payload) {
     try {
       const userIdx = state.users.findIndex(
         (user) => user.email === payload.email
@@ -64,10 +64,11 @@ const actions = {
         });
         return { status: 409, message: "Email already taken" };
       }
-
       delete payload.confirmPassword;
-      commit("REGISTER_USER", { ...payload, id: numberGenerator(1, 100) });
-      commit("SET_USER", payload);
+      const user = { ...payload, id: numberGenerator(1, 10) };
+      commit("REGISTER_USER", user);
+      commit("SET_USER", user);
+      dispatch("tasks/loadTasks", null, { root: true });
       return { status: 200, message: "Ok" };
     } catch (error) {
       Vue.notify({
@@ -78,6 +79,7 @@ const actions = {
   },
   logout({ commit }) {
     try {
+      // dispatch("tasks/cleanTasks", null, { root: true });
       commit("LOGOUT");
     } catch (error) {
       Vue.notify({

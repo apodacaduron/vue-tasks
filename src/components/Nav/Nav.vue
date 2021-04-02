@@ -1,6 +1,8 @@
 <template lang="pug">
 nav#nav.df.df-center(:class="backgroundStyle")
-  .df.df-center.max-width(:class="{ 'df-space-between': spaceBetween }")
+  .df.df-center.max-width.full-width(
+    :class="{ 'df-space-between': spaceBetween }"
+  )
     router-link.logo(to="/") Tasks.
     .actions(v-if="!onlyLogo && !isAuthenticated")
       router-link.button(to="/login") Login
@@ -36,7 +38,8 @@ export default {
     backgroundStyle() {
       return {
         "transparent-bg": this.transparent,
-        "dark-bg": !this.transparent
+        "dark-bg": !this.transparent,
+        "nav-shadow": !this.transparent
       };
     }
   },
@@ -65,6 +68,8 @@ nav#nav
   box-sizing: border-box
   position: fixed
   top: 0
+  left: 0
+  z-index: 9
   .logo
     font-weight: bold
     font-size: 1.6rem
@@ -75,4 +80,8 @@ nav#nav
   background: transparent
 .dark-bg
   background: $lightBg
+.nav-shadow
+  -webkit-box-shadow: 0px 8px 8px 0px rgba($darkBg,0.3)
+  -moz-box-shadow: 0px 8px 8px 0px rgba($darkBg,0.3)
+  box-shadow: 0px 8px 8px 0px rgba($darkBg,0.3)
 </style>
