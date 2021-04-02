@@ -6,11 +6,13 @@ nav#nav.df.df-center(:class="backgroundStyle")
       router-link.button(to="/login") Login
       router-link.button.button__border(to="/sign-up") Sign Up
     .actions(v-if="!onlyLogo && isAuthenticated")
-      button.button {{ user && user.name }}
+      button.button.text-align-right(@click="logoutAccount")
+        .name {{ user && user.name }}
+        .log-out.color-gray Log out
 </template>
 
 <script>
-import { mapGetters } from "vuex";
+import { mapGetters, mapActions } from "vuex";
 export default {
   props: {
     transparent: {
@@ -37,6 +39,15 @@ export default {
         "dark-bg": !this.transparent
       };
     }
+  },
+  methods: {
+    ...mapActions({
+      logout: "auth/logout"
+    }),
+    logoutAccount() {
+      this.logout();
+      this.$router.push("/");
+    }
   }
 };
 </script>
@@ -45,6 +56,7 @@ export default {
 @import '@/style/variables'
 @import '@/style/layout'
 @import '@/style/formComponents'
+@import '@/style/font'
 
 nav#nav
   width: 100%

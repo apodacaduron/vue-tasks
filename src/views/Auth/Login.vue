@@ -2,11 +2,14 @@
 #login
   Nav(onlyLogo, :spaceBetween="false")
   .sized-box.df.df-center
-    .form-container.df.df-center.df-direction-column
+    form.form-container.df.df-center.df-direction-column(
+      @submit.prevent="submitForm"
+    )
       h1.color-white Inicia Sesión
       .mb-2
       input.input.input__border.full-width(
         placeholder="Correo electrónico",
+        type="email",
         v-model="form.email"
       )
       .error-msg(v-if="$v.form.email.$model && $v.form.email.$invalid") Un correo válido es requerido
@@ -24,13 +27,16 @@
         router-link.anchor(to="/sign-up") Haz click aquí
       .mb-2
       button.button.button__gradient-background.font-bold.full-width(
-        :disabled="$v.form.$invalid"
+        :disabled="$v.form.$invalid",
+        type="submit"
       ) Inicia Sesión
 </template>
 
 <script>
+import { mapActions } from "vuex";
 import { validationMixin } from "vuelidate";
 import { required, email, minLength } from "vuelidate/lib/validators";
+
 export default {
   mixins: [validationMixin],
   components: {
@@ -53,7 +59,18 @@ export default {
       email: "",
       password: ""
     }
-  })
+  }),
+  methods: {
+    ...mapActions({
+      login: "auth/login"
+    }),
+    async submitForm() {
+      if (this.$v.form.$invalid) return;
+      const result = await this.login(this.form);
+      console.log(result);
+      if (result.status === 200) this.$router.push("/tasks");
+    }
+  }
 };
 </script>
 

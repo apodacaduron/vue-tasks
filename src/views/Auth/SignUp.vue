@@ -2,7 +2,9 @@
 #signup
   Nav(onlyLogo, :spaceBetween="false")
   .sized-box.df.df-center
-    .form-container.df.df-center.df-direction-column
+    form.form-container.df.df-center.df-direction-column(
+      @submit.prevent="createAccount"
+    )
       h1.color-white Regístrate
       .mb-2
       input.input.input__border.full-width(
@@ -13,6 +15,7 @@
       .mb-2
       input.input.input__border.full-width(
         placeholder="Correo electrónico",
+        type="email",
         v-model.trim="form.email"
       )
       .error-msg(v-if="$v.form.email.$model && $v.form.email.$invalid") Un correo válido es requerido
@@ -39,11 +42,13 @@
         router-link.anchor(to="/login") Haz click aquí
       .mb-2
       button.button.button__gradient-background.font-bold.full-width(
-        :disabled="$v.form.$invalid"
+        :disabled="$v.form.$invalid",
+        type="submit"
       ) Crear cuenta
 </template>
 
 <script>
+import { mapActions } from "vuex";
 import { validationMixin } from "vuelidate";
 import { required, email, minLength, sameAs } from "vuelidate/lib/validators";
 
@@ -77,7 +82,18 @@ export default {
       password: "",
       confirmPassword: ""
     }
-  })
+  }),
+  methods: {
+    ...mapActions({
+      signUp: "auth/signUp"
+    }),
+    async createAccount() {
+      // e.preventDefault();
+      if (this.$v.form.$invalid) return;
+      const result = await this.signUp(this.form);
+      if (result.status === 200) this.$router.push("/tasks");
+    }
+  }
 };
 </script>
 

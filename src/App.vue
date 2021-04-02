@@ -1,18 +1,20 @@
 <template lang="pug">
 #app
+  notifications
   transition(name="fade")
     router-view
 </template>
 
 <style lang="sass">
 @import "@/style/variables"
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;700&display=swap')
 
 *
   margin: 0
   padding: 0
 
 #app
-  font-family: Avenir, Helvetica, Arial, sans-serif
+  font-family: 'Nunito sans', Avenir, Helvetica, Arial, sans-serif
   -webkit-font-smoothing: antialiased
   -moz-osx-font-smoothing: grayscale
   background: $darkBg
