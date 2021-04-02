@@ -39,7 +39,7 @@ const actions = {
     try {
       commit("IS_LOADING", true);
       const result = await axios.get(
-        `http://jsonplaceholder.typicode.com/todos?userId=${getters.user.id}`
+        `https://jsonplaceholder.typicode.com/todos?userId=${getters.user.id}`
       );
       result.data.forEach(
         (task) => (task.date = dayjs().format("YYYY-MM-DD HH:mm:ss"))
