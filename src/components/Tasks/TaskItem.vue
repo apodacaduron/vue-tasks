@@ -61,6 +61,7 @@ export default {
         task: this.task,
         delay: 0
       });
+      this.toggleInput();
     }
   }
 };
