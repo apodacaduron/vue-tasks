@@ -67,7 +67,6 @@ export default {
     async submitForm() {
       if (this.$v.form.$invalid) return;
       const result = await this.login(this.form);
-      console.log(result);
       if (result.status === 200) this.$router.push("/tasks");
     }
   }
