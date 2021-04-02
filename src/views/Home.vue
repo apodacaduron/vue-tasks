@@ -6,7 +6,7 @@
     .mb-1
     p.color-white Keep track of the daily tasks in life and get that satisfaction upon completion.
     .mb-3
-    router-link.button.button__gradient-background.font-bold(
+    router-link.button.button__gradient-background.button__padding.font-bold(
       :to="isAuthenticated ? '/tasks' : '/login'"
     ) Get Started
     .mb-4

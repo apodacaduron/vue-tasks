@@ -2,6 +2,9 @@
 #tasks
   Nav
   .max-width.df.df-center.df-direction-column.m-auto
+    .new-task-container.df.df-center.df-direction-column.full-width
+      NewTask
+    .mt-3
     .pending-container.df.df-center.df-direction-column.full-width
       TaskItem(
         :id="task.id",
@@ -34,6 +37,7 @@ import { mapGetters, mapActions } from "vuex";
 export default {
   components: {
     Nav: () => import("@/components/Nav/Nav"),
+    NewTask: () => import("@/components/Tasks/NewTask"),
     TaskItem: () => import("@/components/Tasks/TaskItem"),
     Collapse
   },

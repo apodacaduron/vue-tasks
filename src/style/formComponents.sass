@@ -10,15 +10,17 @@
   text-decoration: none
   border-radius: $radius
   transition: 0.2s all ease-in-out
+  &__sq
+    padding: 8px 8px !important
   &__border
     border: 2px solid $border
   &__gradient-background
     background: $gradient
     &:hover:not(:disabled)
       transform: translate3d(0,-2px,0)
-      -webkit-box-shadow: 0px 8px 8px 0px rgba($white,0.3)
-      -moz-box-shadow: 0px 8px 8px 0px rgba($white,0.3)
-      box-shadow: 0px 8px 8px 0px rgba($white,0.3)
+      -webkit-box-shadow: 0px 8px 8px 0px rgba($darkBg,0.3)
+      -moz-box-shadow: 0px 8px 8px 0px rgba($darkBg,0.3)
+      box-shadow: 0px 8px 8px 0px rgba($darkBg,0.3)
     &:disabled
       background: gray
       color: darkgrey

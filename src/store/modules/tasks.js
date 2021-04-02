@@ -1,5 +1,6 @@
 import Vue from "vue";
 import axios from "axios";
+import dayjs from "dayjs";
 
 const state = {
   tasks: [],
@@ -17,6 +18,9 @@ const mutations = {
     setTimeout(() => {
       Vue.set(state.tasks, idx, { ...state.tasks[idx], [column]: value });
     }, 250);
+  },
+  ADD_TASK(state, task) {
+    state.tasks.unshift(task);
   },
   DELETE_TASK(state, task) {
     const idx = state.tasks.findIndex((_task) => _task.id === task.id);
@@ -39,7 +43,10 @@ const actions = {
       const result = await axios.get(
         `http://jsonplaceholder.typicode.com/todos?userId=${getters.user.id}`
       );
-      commit("SET_TASKS", result.data);
+      const tasks = result.data.forEach(
+        (task) => (task.date = dayjs().format("YYYY-MM-DD HH:mm:ss"))
+      );
+      commit("SET_TASKS", tasks);
       commit("IS_LOADING", false);
     } catch (error) {
       Vue.notify({
@@ -47,6 +54,15 @@ const actions = {
         type: "error"
       });
     }
+  },
+  async addTask({ commit, getters, state }, taskText) {
+    commit("ADD_TASK", {
+      title: taskText,
+      completed: false,
+      id: Math.max(...state.tasks.map((task) => task.id)) + 1,
+      userId: getters.user.id,
+      date: dayjs().format("YYYY-MM-DD HH:mm:ss")
+    });
   },
   async updateTask({ commit }, { column, value, task }) {
     commit("UPDATE_TASK", { column, value, task });
