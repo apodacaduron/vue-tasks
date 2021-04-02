@@ -8,12 +8,14 @@
     .mb-3
     router-link.button.button__gradient-background.font-bold(to="/login") Get Started
     .mb-4
+  Footer(fixed)
 </template>
 
 <script>
 export default {
   components: {
-    Nav: () => import("@/components/Nav/Nav.vue")
+    Nav: () => import("@/components/Nav/Nav.vue"),
+    Footer: () => import("@/components/Footer/Footer.vue")
   }
 };
 </script>
