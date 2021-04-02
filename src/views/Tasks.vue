@@ -6,28 +6,30 @@
       NewTask
     .mt-3
     .pending-container.df.df-center.df-direction-column.full-width
-      TaskItem(
-        :id="task.id",
-        :title="task.title",
-        :date="task.date",
-        :checked="task.completed",
-        @change="updateTask({ column: 'completed', value: true, task })",
-        @delete="deleteTask(task)",
-        v-for="(task, index) in tasks.filter((task) => !task.completed)",
-        :key="task.id"
-      )
+      transition-group.full-width(name="list", tag="div")
+        TaskItem(
+          :id="task.id",
+          :title="task.title",
+          :date="task.date",
+          :checked="task.completed",
+          @change="updateTask({ column: 'completed', value: true, task })",
+          @delete="deleteTask(task)",
+          v-for="(task, index) in tasks.filter((task) => !task.completed)",
+          :key="task.id"
+        )
     .mt-3(v-if="tasks.filter((task) => !task.completed).length > 0")
     .completed.df.df-center.df-direction-column.full-width
-      TaskItem(
-        :id="task.id",
-        :title="task.title",
-        :date="task.date",
-        :checked="task.completed",
-        @change="updateTask({ column: 'completed', value: false, task })",
-        @delete="deleteTask(task)",
-        v-for="(task, index) in tasks.filter((task) => task.completed)",
-        :key="task.id"
-      )
+      transition-group.full-width(name="list")
+        TaskItem(
+          :id="task.id",
+          :title="task.title",
+          :date="task.date",
+          :checked="task.completed",
+          @change="updateTask({ column: 'completed', value: false, task })",
+          @delete="deleteTask(task)",
+          v-for="(task, index) in tasks.filter((task) => task.completed)",
+          :key="task.id"
+        )
 </template>
 
 <script>
@@ -65,8 +67,19 @@ export default {
 <style lang="sass" scoped>
 @import '@/style/layout'
 @import '@/style/font'
+@import '@/style/formComponents'
 
 #tasks
   padding: 128px 16px 72px 16px
   box-sizing: border-box
+.absolute-bottom
+  position: absolute
+  bottom: 48px
+
+.list-enter-active, .list-leave-active
+  transition: all 0.6s
+
+.list-enter, .list-leave-to /* .list-leave-active below version 2.1.8 */
+  opacity: 0
+  transform: translateY(24px)
 </style>
