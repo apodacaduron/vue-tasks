@@ -1,12 +1,21 @@
 <template lang="pug">
 .task-item.df.df-center.df-justify-start.light-background.border-radius
   label.pure-material-checkbox 
-    input(type="checkbox", :checked="checked", @change="$emit('change')")
+    input(type="checkbox", :checked="task.checked", @change="$emit('change')")
     span
   .text-container.full-width
-    .title.color-white(
-      :class="{ 'line-through': checked, 'color-gray': checked }"
-    ) {{ title }}
+    button.custom-button.title.color-white(
+      :class="{ 'line-through': task.checked, 'color-gray': task.checked }",
+      v-if="!isEditable",
+      @click="toggleInput"
+    ) {{ task.title }}
+    input.input.input__editable.color-white.full-width(
+      v-if="isEditable",
+      :value="task.title",
+      @keyup.enter="taskTitleUpdate",
+      @blur="toggleInput",
+      ref="editableInput"
+    )
     .completed-date.color-gray.small-text {{ parsedDate }}
   .remove-container
     button.button(@click="$emit('delete')")
@@ -14,28 +23,44 @@
 </template>
 
 <script>
+import { mapActions } from "vuex";
 import dayjs from "dayjs";
 import localizedFormat from "dayjs/plugin/localizedFormat";
 dayjs.extend(localizedFormat);
 
 export default {
   props: {
-    checked: {
-      type: Boolean,
-      default: false
-    },
-    title: {
-      type: String,
-      default: ""
-    },
-    date: {
-      type: String,
-      default: ""
+    task: {
+      type: Object,
+      default: () => {}
     }
   },
+  data: () => ({
+    isEditable: false
+  }),
   computed: {
     parsedDate() {
-      return this.date ? dayjs(this.date).format("LLL") : dayjs().format("LLL");
+      return this.task.date
+        ? dayjs(this.task.date).format("LLL")
+        : dayjs().format("LLL");
+    }
+  },
+  methods: {
+    ...mapActions({
+      updateTask: "tasks/updateTask"
+    }),
+    toggleInput() {
+      this.isEditable = !this.isEditable;
+      if (this.isEditable)
+        this.$nextTick(() => this.$refs.editableInput.focus());
+    },
+    taskTitleUpdate(e) {
+      this.updateTask({
+        column: "title",
+        value: e.target.value,
+        task: this.task,
+        delay: 0
+      });
     }
   }
 };
@@ -53,4 +78,13 @@ export default {
   padding: 16px
   box-sizing: border-box
   transition: 0.5s all ease-in-out
+
+.custom-button
+  background: none
+  color: $white
+  border: none
+  font: inherit
+  cursor: pointer
+  text-decoration: none
+  text-align: left
 </style>

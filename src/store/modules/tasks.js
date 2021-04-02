@@ -62,10 +62,10 @@ const actions = {
       date: dayjs().format("YYYY-MM-DD HH:mm:ss")
     });
   },
-  async updateTask({ commit }, { column, value, task }) {
+  async updateTask({ commit }, { column, value, task, delay = 250 }) {
     setTimeout(() => {
       commit("UPDATE_TASK", { column, value, task });
-    }, 250);
+    }, delay);
   },
   async cleanTasks({ commit }) {
     commit("CLEAN_TASKS");

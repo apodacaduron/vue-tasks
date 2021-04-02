@@ -5,31 +5,28 @@
     .new-task-container.df.df-center.df-direction-column.full-width
       NewTask
     .mt-3
-    .pending-container.df.df-center.df-direction-column.full-width
-      transition-group.full-width(name="list", tag="div")
-        TaskItem(
-          :id="task.id",
-          :title="task.title",
-          :date="task.date",
-          :checked="task.completed",
-          @change="updateTask({ column: 'completed', value: true, task })",
-          @delete="deleteTask(task)",
-          v-for="(task, index) in tasks.filter((task) => !task.completed)",
-          :key="task.id"
-        )
+    transition-group.pending-container.df.df-center.df-direction-column.full-width(
+      name="list",
+      tag="div"
+    )
+      TaskItem(
+        :task="task",
+        @change="updateTask({ column: 'completed', value: true, task })",
+        @delete="deleteTask(task)",
+        v-for="(task, index) in tasks.filter((task) => !task.completed)",
+        :key="task.id"
+      )
     .mt-3(v-if="tasks.filter((task) => !task.completed).length > 0")
-    .completed.df.df-center.df-direction-column.full-width
-      transition-group.full-width(name="list")
-        TaskItem(
-          :id="task.id",
-          :title="task.title",
-          :date="task.date",
-          :checked="task.completed",
-          @change="updateTask({ column: 'completed', value: false, task })",
-          @delete="deleteTask(task)",
-          v-for="(task, index) in tasks.filter((task) => task.completed)",
-          :key="task.id"
-        )
+    transition-group.completed.df.df-center.df-direction-column.full-width(
+      name="list"
+    )
+      TaskItem(
+        :task="task",
+        @change="updateTask({ column: 'completed', value: false, task })",
+        @delete="deleteTask(task)",
+        v-for="(task, index) in tasks.filter((task) => task.completed)",
+        :key="task.id"
+      )
 </template>
 
 <script>
