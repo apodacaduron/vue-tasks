@@ -15,9 +15,7 @@ const mutations = {
     const idx = state.tasks.findIndex((_task) => _task.id === task.id);
     if (idx === -1) return;
 
-    setTimeout(() => {
-      Vue.set(state.tasks, idx, { ...state.tasks[idx], [column]: value });
-    }, 250);
+    Vue.set(state.tasks, idx, { ...state.tasks[idx], [column]: value });
   },
   ADD_TASK(state, task) {
     state.tasks.unshift(task);
@@ -43,10 +41,10 @@ const actions = {
       const result = await axios.get(
         `http://jsonplaceholder.typicode.com/todos?userId=${getters.user.id}`
       );
-      const tasks = result.data.forEach(
+      result.data.forEach(
         (task) => (task.date = dayjs().format("YYYY-MM-DD HH:mm:ss"))
       );
-      commit("SET_TASKS", tasks);
+      commit("SET_TASKS", result.data);
       commit("IS_LOADING", false);
     } catch (error) {
       Vue.notify({
@@ -65,7 +63,9 @@ const actions = {
     });
   },
   async updateTask({ commit }, { column, value, task }) {
-    commit("UPDATE_TASK", { column, value, task });
+    setTimeout(() => {
+      commit("UPDATE_TASK", { column, value, task });
+    }, 250);
   },
   async cleanTasks({ commit }) {
     commit("CLEAN_TASKS");

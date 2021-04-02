@@ -1,7 +1,7 @@
 <template lang="pug">
 #tasks
   Nav
-  .max-width.df.df-center.df-direction-column.m-auto
+  .df.df-center.df-direction-column.full-width
     .new-task-container.df.df-center.df-direction-column.full-width
       NewTask
     .mt-3
@@ -16,7 +16,7 @@
         v-for="(task, index) in tasks.filter((task) => !task.completed)",
         :key="task.id"
       )
-    .mt-3
+    .mt-3(v-if="tasks.filter((task) => !task.completed).length > 0")
     .completed.df.df-center.df-direction-column.full-width
       TaskItem(
         :id="task.id",

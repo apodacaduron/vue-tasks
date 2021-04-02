@@ -4,14 +4,14 @@
 )
   .add-button-container
     button.button.button__gradient-background.button__sq.df.df-center(
-      @click="addTask(taskText)"
+      @click="newTask(taskText)"
     )
       img(src="@/assets/plus.svg")
   .text-container.full-width
     input.input.full-width(
       placeholder="Go and get apples to the supermarket",
       v-model="taskText",
-      @keyup.enter="addTask(taskText)",
+      @keyup.enter="newTask(taskText)",
       ref="input"
     )
 </template>
@@ -51,6 +51,10 @@ export default {
     }),
     focusInput() {
       this.$refs.input.focus();
+    },
+    newTask(text) {
+      this.taskText = "";
+      this.addTask(text);
     }
   }
 };
