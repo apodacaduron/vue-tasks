@@ -1,11 +1,11 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "f7ea2e65ab08c08a81cfa2dcf5b52221",
-    "url": "/vue-tasks/404.html"
+    "revision": "1f8a37f14b54544593cc",
+    "url": "/vue-tasks/css/app.38b79c34.css"
   },
   {
-    "revision": "3b211c9c6a6206b85385",
-    "url": "/vue-tasks/css/app.38b79c34.css"
+    "revision": "8bb4b4b4c6de7f168524",
+    "url": "/vue-tasks/css/chunk-024f1add.5fa8c3f7.css"
   },
   {
     "revision": "5d1b18a96de0d26bc04e",
@@ -16,10 +16,6 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/vue-tasks/css/chunk-5f7e7724.4895880f.css"
   },
   {
-    "revision": "c01c9e1d7c70ca4198c6",
-    "url": "/vue-tasks/css/chunk-72565651.2f68f222.css"
-  },
-  {
     "revision": "a5f922ebe396059b61a6",
     "url": "/vue-tasks/css/chunk-e56336fa.bf6678d9.css"
   },
@@ -28,7 +24,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/vue-tasks/css/sign-up.b71a4fb3.css"
   },
   {
-    "revision": "24a43df9f900451cd255",
+    "revision": "2d63768263700ce31c29",
     "url": "/vue-tasks/css/tasks.a5118a2a.css"
   },
   {
@@ -56,12 +52,16 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/vue-tasks/img/x.b5c41cdc.svg"
   },
   {
-    "revision": "5cd20e0f5c1b2539d9db855f407132d2",
+    "revision": "813876527d3d377aaaec5f707a825bc2",
     "url": "/vue-tasks/index.html"
   },
   {
-    "revision": "3b211c9c6a6206b85385",
-    "url": "/vue-tasks/js/app.153557b7.js"
+    "revision": "1f8a37f14b54544593cc",
+    "url": "/vue-tasks/js/app.654048d4.js"
+  },
+  {
+    "revision": "8bb4b4b4c6de7f168524",
+    "url": "/vue-tasks/js/chunk-024f1add.da8b4d6d.js"
   },
   {
     "revision": "5d1b18a96de0d26bc04e",
@@ -70,10 +70,6 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
     "revision": "b86e32993ffc24579a51",
     "url": "/vue-tasks/js/chunk-5f7e7724.e36621e7.js"
-  },
-  {
-    "revision": "c01c9e1d7c70ca4198c6",
-    "url": "/vue-tasks/js/chunk-72565651.cea3481a.js"
   },
   {
     "revision": "a5f922ebe396059b61a6",
@@ -92,8 +88,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/vue-tasks/js/sign-up~tasks.a46be830.js"
   },
   {
-    "revision": "24a43df9f900451cd255",
-    "url": "/vue-tasks/js/tasks.00fd9483.js"
+    "revision": "2d63768263700ce31c29",
+    "url": "/vue-tasks/js/tasks.229811bd.js"
   },
   {
     "revision": "8daa1f6f4f03123948453c23a4a67716",
