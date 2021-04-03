@@ -9,7 +9,7 @@
     span
   .text-container.full-width
     button.custom-button.title.color-white(
-      :class="{ 'line-through': task.checked, 'color-gray': task.checked }",
+      :class="{ 'line-through': task.completed, 'color-gray': task.completed }",
       v-if="!isEditable",
       @click="toggleInput"
     ) {{ task.title }}
