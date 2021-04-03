@@ -1,7 +1,11 @@
 <template lang="pug">
 .task-item.df.df-center.df-justify-start.light-background.border-radius
   label.pure-material-checkbox 
-    input(type="checkbox", :checked="task.checked", @change="$emit('change')")
+    input(
+      type="checkbox",
+      :checked="task.completed",
+      @change="$emit('change')"
+    )
     span
   .text-container.full-width
     button.custom-button.title.color-white(
