@@ -53,8 +53,9 @@ export default {
       this.$refs.input.focus();
     },
     newTask(text) {
-      this.taskText = "";
+      if (!text) return;
       this.addTask(text);
+      this.taskText = "";
     }
   }
 };
