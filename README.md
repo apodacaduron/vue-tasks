@@ -2,6 +2,8 @@
 
 ### Demo
 
+[https://apodacaduron.github.io/vue-tasks/](https://apodacaduron.github.io/vue-tasks/)
+
 ### About the project
 
 This is a small project that i build for a frontend position that i applied, its built using Vue.js framework. The main objective of this project is to build a website to create, complete, update and delete tasks, but first the user must create an account and log in, the user will then get stored on the browser's localStorage just for demo purposes, the user will already have some tasks available to complete, this tasks where previously fetched using a fake data api. The routes are protected so if you dont have an account you cant create tasks, and if you do have an account then you wont be able to access login and signup pages without loggin out first.
