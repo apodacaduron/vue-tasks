@@ -21,8 +21,6 @@ To design this whole project i used an image that i found on dribbble, all of th
 
 Right now i don't know about automated testing but i'm definetly planning to invest time to learn all that i can.
 
-As we know Vue is not extremly SEO friendly on multi page websites but i tried my best to reach a good score on Google Lighthouse.
-
 If someone else finds this repository, feel free take a look around and maybe even use it for whatever you want.👻
 
 Packages: Vue-router, vuex, vuex-persistedstate, day.js, axios, sass, pug
