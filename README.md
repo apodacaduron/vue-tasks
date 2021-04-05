@@ -3,6 +3,7 @@
 ### Demo
 
 [https://apodacaduron.github.io/vue-tasks/](https://apodacaduron.github.io/vue-tasks/)
+[https://practical-colden-8f72d0.netlify.app](https://practical-colden-8f72d0.netlify.app)
 
 ### About the project
 
